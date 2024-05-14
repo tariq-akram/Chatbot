@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat with GPT-3</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .chat-container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-message {
+      margin-bottom: 20px;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+
+    .system-message {
+      color: gray;
+    }
+
+    .user-message {
+      color: blue;
+      background-color: #e0f0ff;
+    }
+
+    .response-message {
+      color: green;
+      background-color: #f0ffe0;
+    }
+
+    .message-header {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container my-5 px-5 chat-container">
+    <h2 class="mb-4">Chat with GPT-3</h2>
+    <form method="get" action="{% url 'chat' %}">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="user_input" class="form-label">Message</label>
+        <input type="text" class="form-control" id="user_input" name="user_input" placeholder="Enter your message">
+      </div>
+      <button type="submit" class="btn btn-primary my-2">Send</button>
+    </form>
+
+    {% if gpt_response %}
+      <div class="chat-message user-message">
+        <span class="message-header">You:</span> {{ user_input }}
+      </div>
+      <div class="chat-message response-message">
+        <span class="message-header">GPT-3:</span> {{ gpt_response }}
+      </div>
+    {% endif %}
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
