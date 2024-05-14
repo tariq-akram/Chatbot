@@ -3,7 +3,7 @@ from django.shortcuts import render
 import openai as ai
 
 # Create your views here.
-API_KEY = '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'
+# API_KEY = Enter api key here
 ai.api_key = API_KEY
 model_id = 'gpt-3.5-turbo'
 
