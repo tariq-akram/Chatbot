@@ -26,7 +26,7 @@ This project demonstrates a simple integration of the OpenAI API into a single-p
 2. Navigate to the project directory:
 
     ```bash
-    cd chatbot
+    cd simple-chatbot
     ```
 
 3. Install dependencies:
